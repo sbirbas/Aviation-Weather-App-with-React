@@ -1,48 +1,60 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import background from "./img.png";
+import './search.js'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function WeatherComponent() {
+    const [search, setSearch] = useState('');
+    const [data, setData] = useState([]);
 
-  const [data, setData] = useState([]);
+    const handleSearch = (event) => {
+        setSearch(event.target.value);
+    }
+    const fetchWeatherData = () => {
+        const apiUrl = `https://api.checkwx.com/taf/${search}/decoded`;
 
 
-  useEffect(() => {
+        const requestOptions = {
+            method: 'GET',
+            headers: {
+                'X-API-Key': 'WEATHER_API_KEY',
+            },
+        };
 
-    var myHeaders = new Headers();
-    myHeaders.append("X-API-Key", "WEATHER_API_KEY");
-
-    var requestOptions = {
-      method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
-    };
-    fetch("https://api.checkwx.com/taf/klns/decoded", requestOptions)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          setData(data.data || []);
-        })
-        .catch(error => {
-          console.error('Error fetching data:', error);
-        });
-  }, []);
-
-  return (
-      <div style={{
-          backgroundImage: `url(${background})` ,
-          backgroundRepeat: 'no-repeat',
-          backgroundSize: 'fill',
-      }}><h1>TAF and SIGMET Weather</h1>
-          <ul>
-              {data.map((item, index) => (
-                  <li key={index}>
-                  <strong>{item.type}</strong>: {item.raw_text}
-                  </li>
-              ))}
-          </ul>
-      </div>
-  );
+        fetch(apiUrl, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                setData(data.data || []);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+    }
+        return (
+            <div className="card">
+                <div className="text-center mx-5">
+                    <h1>TAF Weather</h1>
+                    <ul>
+                        {data.map((item, index) => (
+                            <li key={index}>
+                                <strong>{item.type}</strong>: {item.raw_text}
+                            </li>
+                        ))}
+                    </ul>
+                    <div className="input-group mb-3">
+                        <button onClick={fetchWeatherData}>Search ICAO Code</button>
+                        <input
+                            type="text"
+                            className="form-control"
+                            placeholder="Search an airport"
+                            value={search}
+                            onChange={handleSearch}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
 }
 
 export default WeatherComponent;

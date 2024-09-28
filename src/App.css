@@ -1,3 +1,18 @@
-h1{
-  text-align: center;
+body{
+    background-image: url("img.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    justify-content: center !important;
+}
+
+.card{
+    opacity: 80%;
+    margin: 10% 20% 15% 20%;
+    padding: 75px !important;
+
+}
+.card:hover{
+    opacity: 1;
+    transition: 0.6s;
+
 }
