@@ -1,12 +1,13 @@
 body{
-    background-image: url("img.jpg");
+    background-image: url("darkplane.jpeg");
     background-repeat: no-repeat;
     background-size: cover;
     justify-content: center !important;
+    font-family: 'comic sans', sans-serif !important;
 }
 
 .card{
-    opacity: 80%;
+    opacity: 90%;
     margin: 10% 20% 15% 20%;
     padding: 75px !important;
 
@@ -16,3 +17,8 @@ body{
     transition: 0.6s;
 
 }
+
+li{
+    list-style: none;
+}
+
