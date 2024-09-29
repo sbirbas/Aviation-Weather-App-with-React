@@ -21,7 +21,7 @@ function WeatherComponent() {
         const requestOptions = {
             method: 'GET',
             headers: {
-                'X-API-Key': 'WEATHER_API_KEY',
+                'X-API-Key': '8197f82ac9614fb185d6fd22fd',
             },
         };
 
@@ -98,7 +98,7 @@ function WeatherComponent() {
                     </div>
                 </div>
                 <div className={'card'}>
-                    <h2>About the Dev</h2>
+                    <h2>What the hell do all these numbers and letters mean, and how do pilots gag</h2>
                     <p></p>
                 </div>
 
