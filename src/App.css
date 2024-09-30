@@ -1,24 +1,30 @@
-body{
-    background-image: url("darkplane.jpeg");
-    background-repeat: no-repeat;
+
+html {
+    overflow-y: scroll;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    font-family: "Raleway", sans-serif;
+
+}
+body {
+    overflow-y: visible;
+    overflow-x: hidden;
+    margin: 0;
+    height: 100vh;
+}
+
+.hero{
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
+    background-image: linear-gradient(90deg, rgba(0, 0, 2, 0.55), rgba(0, 0, 0, 0.04)), url("fun_airplane_facts_1600x.webp");
     background-size: cover;
-    justify-content: center !important;
-    font-family: 'comic sans', sans-serif !important;
-}
+    height: 700px;
+    color:white;
+    min-width: 100%;
+    font-size: 3rem;
 
-.card{
-    opacity: 90%;
-    margin: 10% 20% 15% 20%;
-    padding: 75px !important;
-
-}
-.card:hover{
-    opacity: 1;
-    transition: 0.6s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
 }
-
-li{
-    list-style: none;
-}
-
