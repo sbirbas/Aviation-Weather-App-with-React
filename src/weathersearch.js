@@ -44,19 +44,17 @@ function WeatherComponent() {
                 </ul>
 
             <div className="hero row p-5">
-            <h1 className={'col-7'}>aviation weather</h1>
+            <h1 className={'col-7'}>Aviation Weather</h1>
                 <h2 className={'col-5'}>Navigate the skies with confidence. Get real-time METAR and TAF reports for your next flight. Plan ahead with trusted aviation weather data.</h2>
                 </div>
 
             <div className="cardsrow">
-                <div className={'scrollitem'} id={'weather-search'}>
+                <div className={'scrollitem row'} id={'weather-search'}>
                     <div className="text-center mx-5">
-                        <h1 className=''>Search Aviation Weather</h1>
-                        <p>Select an airport and briefing type</p>
-                        <img className='col-4' id='airplane' src={`${process.env.PUBLIC_URL}/airplane.svg`}
-                             alt="Clear Day"/>
-                        {/*<img className='h-25' src={`${process.env.PUBLIC_URL}/weather-images/clear-day.svg`} alt="Clear Day"/>*/}
-                        <ul>
+                       <div className={'col-5'}> <h1 className=''>Search Aviation Weather</h1>
+                       <p>Select an airport and briefing type</p>
+                       </div>
+<div className={'col-5'}>                        <ul>
                             {data.map((item, index) => (
                                 <li key={index}>
                                     <strong className='textarea-warning'>{item.type}</strong>The {typeSearch} for {item.station.name} is:
@@ -96,6 +94,7 @@ function WeatherComponent() {
                         <button className="btn-circle mt-5" id='search-button' onClick={fetchWeatherData}>Search Code
                         </button>
                     </div>
+                        </div>
                 </div>
                 <div className={'scrollitem'} id={'about'}>
                     <h2 className={'px-5'}>What is a TAF?</h2>

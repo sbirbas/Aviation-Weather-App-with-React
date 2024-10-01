@@ -6,14 +6,17 @@ html {
 }
 body{
 }
+.hero{
+    background-image: url("blackbg.jpg");
+    color:white;
+    background-size: cover;
+}
 .cardsrow {
     overflow: auto;
     height: 100vh;
     position: relative;
 }
 .scrollitem {
-
-    background-image: url("");
     height: 100vh;
     display: flex;
     align-items: center;
