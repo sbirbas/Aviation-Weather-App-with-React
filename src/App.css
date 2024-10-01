@@ -1,30 +1,43 @@
 
 html {
-    overflow-y: scroll;
-    height: 100%;
     -webkit-overflow-scrolling: touch;
     font-family: "Raleway", sans-serif;
-
+    line-height: 115%;
 }
-body {
-    overflow-y: visible;
-    overflow-x: hidden;
-    margin: 0;
+body{
+}
+.cardsrow {
+    overflow: auto;
     height: 100vh;
+    position: relative;
+}
+.scrollitem {
+
+    background-image: url("");
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+}
+.scrollitem:nth-child(even) {
+    background-color: lightpink;
 }
 
-.hero{
-    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
-    background-image: linear-gradient(90deg, rgba(0, 0, 2, 0.55), rgba(0, 0, 0, 0.04)), url("fun_airplane_facts_1600x.webp");
-    background-size: cover;
-    height: 700px;
-    color:white;
-    min-width: 100%;
-    font-size: 3rem;
-
+navbar{
+    background-color: white;
+    margin:0 15%;
+    position: fixed;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: flex-end;
     align-items: center;
 
+}
+.navbar .active {
+    border-bottom: 3px gray solid;
+    transition: 0.5s ease;
+}
+li{
+    list-style: none;
 }

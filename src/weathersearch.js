@@ -7,8 +7,6 @@ function WeatherComponent() {
     const [data, setData] = useState([]);
     const [typeSearch, setTypeSearch] = useState('');
 
-
-    const isTAF ==(typeSearch ===  'TAF')
     const handleSearch = (event) => {
         setSearch(event.target.value);
     }
@@ -38,19 +36,17 @@ function WeatherComponent() {
     }
     return (
         <div className="container">
-            <div className="navbar row">
-                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 fixed-top">
+                <ul className="navbar px-5 bg-light-subtle fixed-top">
                     <a className="nav-link" href=".hero">Home</a>
                     <a className="nav-link" href="#weather-search">Weather</a>
                     <a className="nav-link" href="#about">About</a>
                     <a className="nav-link" href="#weather-info"> Weather Info</a>
                 </ul>
-            </div>
 
-            <div className="hero row mw-100">
-            <h1 className={'p-5 m-5 col-6'}>aviation weather</h1>
-                <h2 className={'col-5 p-5 m-5'}>Navigate the skies with confidence. Get real-time METAR and TAF reports for your next flight. Plan ahead with trusted aviation weather data.</h2>
-            </div>
+            <div className="hero row p-5">
+            <h1 className={'col-7'}>aviation weather</h1>
+                <h2 className={'col-5'}>Navigate the skies with confidence. Get real-time METAR and TAF reports for your next flight. Plan ahead with trusted aviation weather data.</h2>
+                </div>
 
             <div className="cardsrow">
                 <div className={'scrollitem'} id={'weather-search'}>
@@ -63,10 +59,17 @@ function WeatherComponent() {
                         <ul>
                             {data.map((item, index) => (
                                 <li key={index}>
-                                    <strong className='textarea-warning'>{item.type}</strong>: {item.raw_text}
+                                    <strong className='textarea-warning'>{item.type}</strong>The {typeSearch} for {item.station.name} is:
+                                    {item.raw_text}
                                 </li>
                             ))}
                         </ul>
+                        {data.map((item, index) => (
+                            <div key={index}>
+                                <h1>What does this mean?</h1>
+                                <p>The temperature at {item.station.name} is {item.temperature.fahrenheit} degrees with {item.humidity.percent}% humidity, the visibility is {item.visibility.miles_float} miles. Flight rules are {item.flight_category}. The clouds are {item.clouds.text} with a ceiling of {item.clouds.feet} feet AGL, and the barometer at this airport reads {item.barometer.hg}Mg of mercury.</p>
+                            </div>
+                        ))}
                         <div className="input-group mb-3">
                             <input
                                 type="text"
@@ -90,12 +93,12 @@ function WeatherComponent() {
                             </select>
 
                         </div>
-                        <button className='btn-lg mt-5' id='search-button' onClick={fetchWeatherData}>Search Code
+                        <button className="btn-circle mt-5" id='search-button' onClick={fetchWeatherData}>Search Code
                         </button>
                     </div>
                 </div>
                 <div className={'scrollitem'} id={'about'}>
-                    <h2>What is a TAF?</h2>
+                    <h2 className={'px-5'}>What is a TAF?</h2>
                     <p>Think of a METAR as a snapshot of the current weather at an airport. It's like looking
                         outside and saying, "Oh, it’s cloudy, and the wind is blowing from the east at 15 knots." It
                         tells you what's happening right now.
@@ -104,7 +107,7 @@ function WeatherComponent() {
                 </div>
 
                 <div className={'scrollitem'}>
-                    <h2>What is METAR?</h2>
+                    <h2 className={'px-5'}>What is METAR?</h2>
                     <p>TAF is like a weather forecast for the next 24-30 hours. It's not just about what the weather
                         is like at this moment, but what’s expected to happen.
                         This helps pilots plan flights by giving them an idea of what the weather will be like when
@@ -114,20 +117,7 @@ function WeatherComponent() {
                 </div>
 
                 <div className={'scrollitem'} id={'weather-info'}>
-                    <h2>Translation</h2>
-                        <ul>
-                            {data.map((item, index) => (
-                                if(typeSearch === 'METAR') {
-                                <ul key={index}>
-                            <li>station : {item.station.name}</li>
-                            <li>Airport Code = {item.icao} </li>
-                        </ul>
-                    }
-                            ))}
-                        </ul>
-                </div>
-                <div className={'scrollitem'} id={'weather-info'}>
-                    <h2>What do all these numbers and letters mean, and how do pilots gauge this into flight
+                    <h2 className={'px-5'}>What do all these numbers and letters mean, and how do pilots gauge this into flight
                         planning?</h2>
                     <p>In aviation, those numbers and letters represent critical information that helps pilots make
                         decisions about their flight. They could be referring to anything from weather conditions,
